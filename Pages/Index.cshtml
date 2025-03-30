@@ -1,0 +1,49 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<h2>Welcome to the Button Actions Page</h2>
+
+<div>
+    <p>Press this button to go to the About page:</p>
+    <form method="post">
+        <button type="submit" class="btn btn-primary" asp-page-handler="GoToAbout">Go to About</button>
+    </form>
+</div>
+
+<div>
+    <p>Press this button to query the database:</p>
+    <form method="post">
+        <button type="submit" class="btn btn-primary" asp-page-handler="QueryDatabase">Query Database</button>
+    </form>
+</div>
+
+<div>
+    <p>Press this button to display an alert message:</p>
+    <form method="post">
+        <button type="submit" class="btn btn-warning" asp-page-handler="ShowMessage">Show Message</button>
+    </form>
+</div>
+
+<div>
+    <p>Press this button to log an event:</p>
+    <form method="post">
+        <button type="submit" class="btn btn-danger" asp-page-handler="LogEvent">Log Event</button>
+    </form>
+</div>
+
+@if (TempData["UserId"] != null)
+{
+    <div class="alert alert-info">
+        Queried UserID: @TempData["UserId"]
+    </div>
+}
+
+@if (TempData["Message"] != null)
+{
+    <div class="alert alert-success">
+        Message: @TempData["Message"]
+    </div>
+}
